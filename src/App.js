@@ -1,19 +1,16 @@
-import React, { Component } from 'react';
-import { subscribeToTimer } from './api';
-import { styled } from 'styled-components';
+import React, { Component } from 'react'
+import { subscribeToTimer } from './api'
+import { styled } from 'styled-components'
 
 class App extends Component {
   constructor(props) {
-    super(props);
-    subscribeToTimer(
-      1000,
-      (err, timestamp) => this.setState({ timestamp })
-    );
+    super(props)
+    subscribeToTimer(1000, (err, timestamp) => this.setState({ timestamp }))
   }
 
   state = {
-    timestamp: 'no timestamp yet'
-  };
+    timestamp: 'no timestamp yet',
+  }
 
   render() {
     return (
@@ -22,8 +19,8 @@ class App extends Component {
           This is the timer value: {this.state.timestamp}
         </p>
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
