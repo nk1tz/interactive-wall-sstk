@@ -1,4 +1,6 @@
-# Socket.io connected react app.
+# Good-morning-Shutterstock (code rage spring 2018)
+## Socket.io connected react app.
+
 Basic Socket Server opens connection with clien and pushes datetimes up to client at regurlar intervals.
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
