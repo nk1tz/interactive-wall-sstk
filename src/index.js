@@ -5,6 +5,14 @@ import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 
 injectGlobal`
+  @font-face {
+    font-family: DIN-bold;
+    src: url('./fonts/DINNextW1G-Bold') format('ttf');
+  }
+  @font-face {
+    font-family: DIN-regular;
+    src: url('./fonts/DINNextW1G-Regular') format('ttf');
+  }
   html, body {
     box-sizing:border-box;
     margin: 0;
@@ -12,6 +20,7 @@ injectGlobal`
 
     font-family: sans-serif;
   }
+
 `
 
 ReactDOM.render(<App />, document.getElementById('root'))
