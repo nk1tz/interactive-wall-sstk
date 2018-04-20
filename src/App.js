@@ -122,7 +122,6 @@ class App extends Component {
   constructor(props) {
     super(props)
     subscribeToTimer(1000, (err, timestamp) => this.setState({ timestamp }))
-    setTimeout(() => window.location.reload(), 6000)
   }
 
   state = {
@@ -135,7 +134,7 @@ class App extends Component {
         <VideoBackgroundElement autoPlay muted loop>
           <source
             src="http://18.233.162.100/video/disco.mp4"
-            type="video/mp4"
+            type="video/ogg"
           />
         </VideoBackgroundElement>
         <OverlayContainer>
