@@ -3,12 +3,11 @@ import styled from 'styled-components'
 import getGreeting from './greetings'
 import ClockIcon from 'react-icons/lib/fa/clock-o'
 import LocationIcon from 'react-icons/lib/fa/map-marker'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import moment from 'moment'
 import './overlay.css'
 
 const OverlayContainer = styled.div`
-  z-index: 3;
+  z-index: 10;
   width: 35vw;
   height: 35vw;
   padding: 2rem;
@@ -21,6 +20,15 @@ const OverlayContainer = styled.div`
   align-items: center;
   text-align: center;
   box-shadow: 0px 0px 64px -6px rgba(0, 0, 0, 0.75);
+  animation: fadein 2s;
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `
 
 const Bar = styled.div`
@@ -105,10 +113,6 @@ const PtoBar = styled.div`
 
 class Overlay extends Component {
   state = {}
-
-  componentDidMount() {
-    // setTimeout
-  }
 
   render() {
     const { data } = this.props

@@ -52,6 +52,10 @@ class App extends Component {
       console.log('Hello Server!')
     }
     socket.onmessage = event => {
+      if (event.data === 'reload') {
+        window.location.reload()
+        return
+      }
       if (this.state.data && this.state.data.time) return
       try {
         const data = JSON.parse(event.data)
