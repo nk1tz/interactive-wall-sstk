@@ -70,7 +70,7 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    setTimeout(() => this.setState({ data: { time: false } }), 10000)
+    setTimeout(() => this.setState({ data: { time: false } }), 20000)
   }
 
   state = {
