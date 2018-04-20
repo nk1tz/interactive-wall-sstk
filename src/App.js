@@ -100,7 +100,6 @@ class App extends Component {
       <FullLayout>
         <VideoBackgroundElement
           autoPlay
-          autoBuffer
           muted
           loop
           // onEnded={() => this.setNextVideoSource()}
