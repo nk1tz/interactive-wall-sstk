@@ -72,7 +72,6 @@ class App extends Component {
   state = {
     data: { time: false },
     sources: [
-      'http://techslides.com/demos/sample-videos/small.mp4',
       'http://18.233.162.100/video/sstk_wall_dystopia.mp4',
       'http://18.233.162.100/video/sstk_wall_pb.mp4',
       'http://18.233.162.100/video/sstk_wall_sports.mp4',
