@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import getGreeting from './greetings'
 import ClockIcon from 'react-icons/lib/fa/clock-o'
 import LocationIcon from 'react-icons/lib/fa/map-marker'
-// import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import moment from 'moment'
 
 const OverlayContainer = styled.div`
@@ -113,25 +113,31 @@ class Overlay extends Component {
     const { data } = this.props
     return (
       <React.Fragment>
-        <OverlayContainer>
-          <H2>{getGreeting(new Date(data.time))}</H2>
-          <Bar />
-          <Container>
-            <InfoBoxLeft>{data.meetings[0].name}</InfoBoxLeft>
-            <InfoBoxRight>
-              <Span>
-                <ClockIcon size={40} />
-                <H5>{moment(data.meetings[0].time).calendar()}</H5>
-              </Span>
-              <Span>
-                <LocationIcon size={60} />
-                <H5>{data.meetings[0].location}</H5>
-              </Span>
-            </InfoBoxRight>
-          </Container>
-        </OverlayContainer>
+        <ReactCSSTransitionGroup
+          transitionName="example"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}
+        >
+          <OverlayContainer key={data.time}>
+            <H2>{getGreeting(new Date(data.time))}</H2>
+            <Bar />
+            <Container>
+              <InfoBoxLeft>{data.meetings[0].name}</InfoBoxLeft>
+              <InfoBoxRight>
+                <Span>
+                  <ClockIcon size={40} />
+                  <H5>{moment(data.meetings[0].time).calendar()}</H5>
+                </Span>
+                <Span>
+                  <LocationIcon size={60} />
+                  <H5>{data.meetings[0].location}</H5>
+                </Span>
+              </InfoBoxRight>
+            </Container>
+          </OverlayContainer>
+        </ReactCSSTransitionGroup>
         {data.ptos &&
-          data.pto.length && (
+          data.ptos.length && (
             <PtoContainer>
               <PtoTitle>Out of office</PtoTitle>
               <PtoBar />
