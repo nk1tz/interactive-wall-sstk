@@ -43,6 +43,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     subscribeToTimer(1000, (err, timestamp) => this.setState({ timestamp }))
+    setTimeout(() => window.location.reload(), 6000)
   }
 
   state = {
