@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { subscribeToTimer } from './api'
 import styled from 'styled-components'
-import ClockIcon from 'react-icons/lib/fa/clock-o'
-import LocationIcon from 'react-icons/lib/fa/map-marker'
+// import ClockIcon from 'react-icons/lib/fa/clock-o'
+// import LocationIcon from 'react-icons/lib/fa/map-marker'
 
 const FullLayout = styled.div`
   height: 100vh;
@@ -74,7 +74,7 @@ class App extends Component {
       <FullLayout>
         <VideoBackgroundElement autoPlay muted loop>
           <source
-            src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+            src="http://18.233.162.100/video/disco.mp4"
             type="video/ogg"
           />
         </VideoBackgroundElement>
