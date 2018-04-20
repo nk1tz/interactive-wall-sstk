@@ -114,29 +114,23 @@ class Overlay extends Component {
     const { data } = this.props
     return (
       <React.Fragment>
-        <ReactCSSTransitionGroup
-          transitionName="overlay"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}
-        >
-          <OverlayContainer key={data.time}>
-            <H2>{getGreeting(new Date(data.time))}</H2>
-            <Bar />
-            <Container>
-              <InfoBoxLeft>{data.meetings[0].name}</InfoBoxLeft>
-              <InfoBoxRight>
-                <Span>
-                  <ClockIcon size={40} />
-                  <H5>{moment(data.meetings[0].time).calendar()}</H5>
-                </Span>
-                <Span>
-                  <LocationIcon size={60} />
-                  <H5>{data.meetings[0].location}</H5>
-                </Span>
-              </InfoBoxRight>
-            </Container>
-          </OverlayContainer>
-        </ReactCSSTransitionGroup>
+        <OverlayContainer key={data.time}>
+          <H2>{getGreeting(new Date(data.time))}</H2>
+          <Bar />
+          <Container>
+            <InfoBoxLeft>{data.meetings[0].name}</InfoBoxLeft>
+            <InfoBoxRight>
+              <Span>
+                <ClockIcon size={40} />
+                <H5>{moment(data.meetings[0].time).calendar()}</H5>
+              </Span>
+              <Span>
+                <LocationIcon size={60} />
+                <H5>{data.meetings[0].location}</H5>
+              </Span>
+            </InfoBoxRight>
+          </Container>
+        </OverlayContainer>
         {data.ptos &&
           data.ptos.length && (
             <PtoContainer>
