@@ -106,7 +106,7 @@ class Overlay extends Component {
   state = {}
 
   componentDidMount() {
-    setTimeout
+    // setTimeout
   }
 
   render() {
@@ -120,21 +120,24 @@ class Overlay extends Component {
             <InfoBoxLeft>{data.meetings[0].name}</InfoBoxLeft>
             <InfoBoxRight>
               <Span>
-                <ClockIcon />
+                <ClockIcon size={40} />
                 <H5>{moment(data.meetings[0].time).calendar()}</H5>
               </Span>
               <Span>
-                <LocationIcon />
+                <LocationIcon size={60} />
                 <H5>{data.meetings[0].location}</H5>
               </Span>
             </InfoBoxRight>
           </Container>
         </OverlayContainer>
-        <PtoContainer>
-          <PtoTitle>Out of office</PtoTitle>
-          <PtoBar />
-          {data.ptos.map(p => <PtoName>{p.person}</PtoName>)}
-        </PtoContainer>
+        {data.ptos &&
+          data.pto.length && (
+            <PtoContainer>
+              <PtoTitle>Out of office</PtoTitle>
+              <PtoBar />
+              {data.ptos.map(p => <PtoName>{p.person}</PtoName>)}
+            </PtoContainer>
+          )}
       </React.Fragment>
     )
   }
