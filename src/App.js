@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import { subscribeToTimer } from './api'
 import styled from 'styled-components'
+// import ClockIcon from 'react-icons/lib/fa/clock-o'
+// import LocationIcon from 'react-icons/lib/fa/map-marker'
 
 const FullLayout = styled.div`
   height: 100vh;
   width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const VideoBackgroundElement = styled.video`
@@ -18,32 +23,42 @@ const VideoBackgroundElement = styled.video`
 
 const OverlayContainer = styled.div`
   z-index: 1;
-  position: absolute;
-  right: 10%;
-  top: 20%;
+  width: 35vw;
+  height: 35vw;
   padding: 2rem;
-  border-radius: 0.25rem;
-  background: linear-gradient(
-    135deg,
-    rgba(76, 76, 76, 0.7) 0%,
-    rgba(89, 89, 89, 0.7) 12%,
-    rgba(102, 102, 102, 0.7) 25%,
-    rgba(71, 71, 71, 0.7) 39%,
-    rgba(44, 44, 44, 0.7) 50%,
-    rgba(0, 0, 0, 0.7) 51%,
-    rgba(17, 17, 17, 0.7) 60%,
-    rgba(43, 43, 43, 0.7) 76%,
-    rgba(28, 28, 28, 0.7) 91%,
-    rgba(19, 19, 19, 0.7) 100%
-  );
-  color: #f8f4ff;
+  border-radius: 50%;
+  background: #f54336;
+  color: white;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 64px -6px rgba(0, 0, 0, 0.75);
+`
+
+const Bar = styled.div`
+  width: 30vw;
+  border-bottom: 10px solid white;
+`
+
+const H1 = styled.h1`
+  font-size: 40px;
+  margin: 25px;
+`
+const H4 = styled.h4`
+  font-size: 12px;
+  margin: 25px 0 5px;
+`
+
+const InfoBox = styled.span`
+  width: 10vw;
 `
 
 class App extends Component {
   constructor(props) {
     super(props)
     subscribeToTimer(1000, (err, timestamp) => this.setState({ timestamp }))
-    setTimeout(() => window.location.reload(), 6000)
+    setTimeout(() => window.location.reload(), 10000)
   }
 
   state = {
@@ -60,9 +75,20 @@ class App extends Component {
           />
         </VideoBackgroundElement>
         <OverlayContainer>
-          <p style={{ fontSize: 'large', margin: 0 }}>
-            This is the timer value: {this.state.timestamp}
-          </p>
+          <h2 style={{ margin: '10px' }}>Hello there,</h2>
+          <H1>Jean-Philippe</H1>
+          <Bar />
+          <H4>Your next meeting:</H4>
+          <span>
+            <InfoBox>
+              {/* <ClockIcon /> */}
+              10am
+            </InfoBox>
+            <InfoBox>
+              {/* <LocationIcon /> */}
+              Dark Side of the Moon
+            </InfoBox>
+          </span>
         </OverlayContainer>
       </FullLayout>
     )
