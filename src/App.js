@@ -6,6 +6,7 @@ import ClockIcon from 'react-icons/lib/fa/clock-o'
 import LocationIcon from 'react-icons/lib/fa/map-marker'
 
 const FullLayout = styled.div`
+  z-index: 1;
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -24,7 +25,7 @@ const VideoBackgroundElement = styled.video`
 `
 
 const OverlayContainer = styled.div`
-  z-index: 1;
+  z-index: 3;
   width: 35vw;
   height: 35vw;
   padding: 2rem;
@@ -58,7 +59,7 @@ const H4 = styled.h4`
 const H5 = styled.h5`
   font-size: 30px;
   font-weight: 200;
-  margin: 0;
+  margin: 0 0 10px 10px;
 `
 const Container = styled.div`
   display: flex;
@@ -74,21 +75,54 @@ const InfoBox = styled.div`
 `
 const InfoBoxLeft = InfoBox.extend`
   text-align: right;
-  margin-right: 10px;
+  margin-right: 20px;
 `
 const InfoBoxRight = InfoBox.extend`
   text-align: left;
-  margin-left: 10px;
+  margin-left: 20px;
 `
 const Span = styled.div`
   display: flex;
+`
+
+const PtoContainer = styled.div`
+  position: fixed;
+  display: flex;
+  padding: 10px;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  top: 20px;
+  left: 20px;
+  width: 15vw;
+  background-color: rgba(51, 51, 51, 0.77);
+  border: 4px solid #f54336;
+  border-radius: 4px;
+`
+
+const PtoTitle = styled.h4`
+  font-size: 30px;
+  font-weight: 300;
+  margin: 0;
+  color: white;
+`
+const PtoName = PtoTitle.extend`
+  font-weight: 200;
+  margin: 5px 0;
+  font-size: 25px;
+`
+const PtoBar = styled.div`
+  width: 100px;
+  border-bottom: 4px solid white;
+  margin: 15px;
 `
 
 class App extends Component {
   constructor(props) {
     super(props)
     subscribeToTimer(1000, (err, timestamp) => this.setState({ timestamp }))
-    setTimeout(() => window.location.reload(), 10000)
+    setTimeout(() => window.location.reload(), 30000)
   }
 
   state = {
@@ -124,6 +158,15 @@ class App extends Component {
               </Span>
             </InfoBoxRight>
           </Container>
+
+          <PtoContainer>
+            <PtoTitle>OUT OF OFFICE</PtoTitle>
+            <PtoBar />
+            <PtoName>Nathaniel Kitzke</PtoName>
+            <PtoName>Ziad Saab</PtoName>
+            <PtoName>Matan Kushner</PtoName>
+            <PtoName>Tom Esterez</PtoName>
+          </PtoContainer>
         </OverlayContainer>
       </FullLayout>
     )
