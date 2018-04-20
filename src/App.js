@@ -52,7 +52,7 @@ class App extends Component {
       console.log('Hello Server!')
     }
     socket.onmessage = event => {
-      if (this.state.data) return
+      if (this.state.data && this.state.data.time) return
       try {
         const data = JSON.parse(event.data)
         const transformedData = transformData(data)
@@ -66,16 +66,14 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const emptyState = {}
-    setTimeout(() => this.setState(emptyState), 4000)
+    setTimeout(() => this.setState({ data: { time: false } }), 10000)
   }
 
-  state = {}
+  state = { data: { time: false } }
 
   render() {
     const { data } = this.state
-    const emptyState = {}
-    setTimeout(() => this.setState(emptyState), 4000)
+
     return (
       <FullLayout>
         <VideoBackgroundElement autoPlay muted loop>
@@ -84,7 +82,7 @@ class App extends Component {
             type="video/ogg"
           />
         </VideoBackgroundElement>
-        {data && <Overlay data={data} />}
+        {data.time && <Overlay data={data} />}
       </FullLayout>
     )
   }
