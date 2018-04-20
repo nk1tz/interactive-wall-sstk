@@ -102,8 +102,9 @@ class App extends Component {
           autoPlay
           autoBuffer
           muted
-          onEnded={() => this.setNextVideoSource()}
-          src={sources[videoIndex]}
+          loop
+          // onEnded={() => this.setNextVideoSource()}
+          src={sources[2]}
         />
         {data.time && <Overlay data={data} />}
       </FullLayout>
