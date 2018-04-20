@@ -69,19 +69,39 @@ class App extends Component {
     setTimeout(() => this.setState({ data: { time: false } }), 10000)
   }
 
-  state = { data: { time: false } }
+  state = {
+    data: { time: false },
+    sources: [
+      'http://techslides.com/demos/sample-videos/small.mp4',
+      'http://18.233.162.100/video/sstk_wall_dystopia.mp4',
+      'http://18.233.162.100/video/sstk_wall_pb.mp4',
+      'http://18.233.162.100/video/sstk_wall_sports.mp4',
+      'http://18.233.162.100/video/shutterstock_ad.mp4',
+      'http://18.233.162.100/video/sstk_wall_fantasy.mp4',
+      'http://18.233.162.100/video/sstk_wall_space.mp4',
+    ],
+    videoIndex: 0,
+  }
+
+  setNextVideoSource = () => {
+    const { sources, videoIndex } = this.state
+    this.setState({
+      videoIndex: videoIndex + 1 < sources.length ? videoIndex + 1 : 0,
+    })
+  }
 
   render() {
-    const { data } = this.state
-
+    const { data, sources, videoIndex } = this.state
+    console.log(this.state)
     return (
       <FullLayout>
-        <VideoBackgroundElement autoPlay muted loop>
-          <source
-            src="http://18.233.162.100/video/disco.mp4"
-            type="video/ogg"
-          />
-        </VideoBackgroundElement>
+        <VideoBackgroundElement
+          autoPlay
+          autoBuffer
+          muted
+          onEnded={() => this.setNextVideoSource()}
+          src={sources[videoIndex]}
+        />
         {data.time && <Overlay data={data} />}
       </FullLayout>
     )
