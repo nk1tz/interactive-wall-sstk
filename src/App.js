@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { subscribeToTimer } from './api'
 import styled from 'styled-components'
-// import ClockIcon from 'react-icons/lib/fa/clock-o'
-// import LocationIcon from 'react-icons/lib/fa/map-marker'
+import ClockIcon from 'react-icons/lib/fa/clock-o'
+import LocationIcon from 'react-icons/lib/fa/map-marker'
 
 const FullLayout = styled.div`
   height: 100vh;
@@ -37,17 +37,21 @@ const OverlayContainer = styled.div`
 `
 
 const Bar = styled.div`
-  width: 30vw;
+  width: 20vw;
   border-bottom: 10px solid white;
 `
 
 const H1 = styled.h1`
-  font-size: 40px;
+  font-size: 60px;
   margin: 25px;
 `
+const H2 = styled.h4`
+  font-size: 30px;
+  margin: 0;
+`
 const H4 = styled.h4`
-  font-size: 12px;
-  margin: 25px 0 5px;
+  font-size: 20px;
+  margin: 50px 0 5px;
 `
 
 const InfoBox = styled.span`
@@ -75,7 +79,7 @@ class App extends Component {
           />
         </VideoBackgroundElement>
         <OverlayContainer>
-          <h2 style={{ margin: '10px' }}>Hello there,</h2>
+          <H2>Hello there,</H2>
           <H1>Jean-Philippe</H1>
           <Bar />
           <H4>Your next meeting:</H4>
