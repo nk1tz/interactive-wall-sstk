@@ -1,9 +1,18 @@
 import React, { Component } from 'react'
-import { subscribeToTimer } from './api'
+import { subscribeToServer } from './api'
 import styled from 'styled-components'
 import getGreeting from './greetings'
 import ClockIcon from 'react-icons/lib/fa/clock-o'
 import LocationIcon from 'react-icons/lib/fa/map-marker'
+const socket = new WebSocket('ws://18.233.162.100:8080')
+socket.onopen = function(event) {
+  console.log('Hello Server!')
+}
+
+socket.onmessage = function(event) {
+  console.log('Server just said hi!', event)
+}
+// Connection opened
 
 const FullLayout = styled.div`
   z-index: 1;
@@ -12,7 +21,7 @@ const FullLayout = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Roboto', sans-serif;
+  /* font-family: 'Roboto', sans-serif; */
 `
 
 const VideoBackgroundElement = styled.video`
@@ -121,11 +130,25 @@ const PtoBar = styled.div`
 class App extends Component {
   constructor(props) {
     super(props)
-    subscribeToTimer(1000, (err, timestamp) => this.setState({ timestamp }))
+    // subscribeToTimer(1000, (err, timestamp) => this.setState({ timestamp }))
   }
 
   state = {
-    timestamp: 'no timestamp yet',
+    data: {
+      time: new Date(),
+      meetings: [
+        {
+          name: 'Code rage montreal 2018 demo',
+          time: new Date(),
+          location: 'Montreal-1-DJ Booth',
+        },
+        {
+          name: 'Montreal 5 a 7',
+          time: new Date(),
+          location: 'Montreal-1-DJ Booth',
+        },
+      ],
+    },
   }
 
   render() {
@@ -139,7 +162,9 @@ class App extends Component {
         </VideoBackgroundElement>
         <OverlayContainer>
           {/* <H2>{getGreeting(new Date())}</H2> */}
-          <H2>Good Afternoon</H2>
+          <H2 onClick={() => console.log('hdf') || subscribeToServer()}>
+            Good Afternoon
+          </H2>
 
           <Bar />
 
