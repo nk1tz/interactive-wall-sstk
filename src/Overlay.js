@@ -5,6 +5,7 @@ import ClockIcon from 'react-icons/lib/fa/clock-o'
 import LocationIcon from 'react-icons/lib/fa/map-marker'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import moment from 'moment'
+import './overlay.css'
 
 const OverlayContainer = styled.div`
   z-index: 3;
@@ -114,7 +115,7 @@ class Overlay extends Component {
     return (
       <React.Fragment>
         <ReactCSSTransitionGroup
-          transitionName="example"
+          transitionName="overlay"
           transitionEnterTimeout={500}
           transitionLeaveTimeout={300}
         >

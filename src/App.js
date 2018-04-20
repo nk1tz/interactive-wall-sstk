@@ -52,6 +52,7 @@ class App extends Component {
       console.log('Hello Server!')
     }
     socket.onmessage = event => {
+      if (this.state.data) return
       try {
         const data = JSON.parse(event.data)
         const transformedData = transformData(data)
@@ -64,10 +65,17 @@ class App extends Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const emptyState = {}
+    setTimeout(() => this.setState(emptyState), 4000)
+  }
+
   state = {}
 
   render() {
     const { data } = this.state
+    const emptyState = {}
+    setTimeout(() => this.setState(emptyState), 4000)
     return (
       <FullLayout>
         <VideoBackgroundElement autoPlay muted loop>
